@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 >بيانات الموظفين</h1>
+@model List<ManagementSystem.Models.Employee>
+
+<a asp-action="Create" class="btn btn-outline-success m-3"> Add New Employee</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Birth date</th>
+            <th>Department</th>
+            <th>Branch</th>
+            <th>salary per month</th>
+       @*     <th>user entry</th>*@
+            <th>entry data</th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var counter = 1; 
+        }
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@counter</td>
+                <td>@employee.Name</td>
+            <td>
+    @if (employee.Sex)
+    {
+        <text>Male</text>
+    }
+    else
+    {
+        <text>Female</text>
+    }
+            </td>
+
+                <td>@employee.Birth_date</td>
+                <td>@employee.Dept.Name</td>
+                <td>@employee.bran.Name</td>
+                <td>@employee.salpermonth</td>
+               @* <td>@employee.UseEntry</td>*@
+                <td>@employee.entrydata</td>
+                
+                <td>
+                     <div class="btn-group" role="group">
+                   
+                        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@employee.Id">تعديل</a>
+                    </div>
+                </td>
+            </tr>
+            counter++;
+        }
+    </tbody>
+</table>
+
