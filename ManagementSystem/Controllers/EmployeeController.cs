@@ -71,6 +71,7 @@ namespace ManagementSystem.Controllers
 
             return  Create(employee);
         }
+
     
         
         
@@ -131,6 +132,10 @@ namespace ManagementSystem.Controllers
             }
             return Edit(id);
         }
+
+
+        [HttpPost]
+        public IActionResult SAVE() { return View(new Employee()); }    
 
 
     }
